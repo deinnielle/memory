@@ -34,6 +34,7 @@ const removeClass = document.querySelector('.flipped');
 cards.forEach(card => {
   const div = document.createElement('div');
   div.innerHTML = card.number;
+  div.className = 'card';
   cardWrapper.appendChild(div);
   div.addEventListener('click', (event) => {
     // console.log(div.innerHTML);
@@ -50,17 +51,13 @@ cards.forEach(card => {
     //   count = 0;
     // }
 
-
-
-    if (cardFlipped === false) {
-      cardFlipped = true;
-    }
+    // if (cardFlipped === false) {
+    //   cardFlipped = true;
+    // }
 
     console.log(left);
     console.log(top);
     console.log(content);
-
-
   });
 });
 

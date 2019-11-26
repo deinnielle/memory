@@ -61,7 +61,7 @@ body {
 
 .card-wrapper {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-wrap: wrap;
 }
@@ -74,4 +74,14 @@ body {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  transform: rotateY(180deg);
 }
+
+.card-wrapper div.flipped {
+  transform: rotateY(0deg);
+}
+
+/* .reset {
+  width: 100px;
+  height: 100px;
+} */
