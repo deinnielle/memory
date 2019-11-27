@@ -75,6 +75,7 @@ body {
   align-items: center;
   border: 1px solid black;
   transform: rotateY(180deg);
+  transition: 1s;
 }
 
 .card-wrapper div.flipped {

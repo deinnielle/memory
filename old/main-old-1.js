@@ -23,6 +23,7 @@ const shuffle = (array) => {
   array.sort(() => Math.random() - 0.5);
 }
 
+
 let cardFlipped = false;
 let countFlipped = 0;
 
@@ -52,6 +53,7 @@ const startGame = () => {
   }
 }
 
+
 let hasFlippedCard = false;
 
 const flipCard = (event) => {
@@ -62,27 +64,53 @@ const flipCard = (event) => {
 
     firstCard = event.target;
     firstCard.classList.add('flipped');
-    firstCard.removeEventListener('click', flipCard);
+    // must add so you cant click on firstcard twice
+    // firstCard.removeEventListener('click', flipCard);
     console.log(firstCard);
 
     return;
   }
+
+  // if(firstCard)
 
   secondCard = event.target;
   secondCard.classList.add('flipped');
   hasFlippedCard = false;
 
   checkForMatch();
-  console.log('second');
+    console.log('second');
   console.log(secondCard);
+
+    // if (firstCard.offsetLeft != event.target.offsetLeft && firstcard.offsetTop !=  event.target.offsetTop ) {
+    //   console.log('hej');
+    //   secondCard.classList.add('flipped');
+    //   hasFlippedCard = false;
+
+    //   checkForMatch();
+    // }
+
+
+
+
+
+
+
+
+
+
  }
+
+//Add disable card before checkmatch
 
   const checkForMatch = () => {
     if (firstCard.innerHTML === secondCard.innerHTML) {
+      console.log(firstCard);
+
       disableCards();
       console.log('match');
-      return;
-    }
+
+       return;
+     }
 
     unflipCards();
    }
@@ -99,4 +127,15 @@ const flipCard = (event) => {
 
   }
 
+
+// cardWrapper.addEventListener('click', flipCard);
+
 resetGame.addEventListener('click', startGame);
+
+// firstCard.classList
+// DOMTokenList(2) ["card", "flipped", value: "card flipped"]length: 2value: "card flipped"0: "card"1: "flipped"__proto__: DOMTokenList
+
+  //  if (hasFlippedCard === false && firstCard.classList.value === 'card flipped' && secondCard.classList.value === 'card flipped') {
+  //     console.log('won');
+
+  //   }
