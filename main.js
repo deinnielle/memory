@@ -58,18 +58,19 @@ const flipCard = (event) => {
   if (hasFlippedCard === false) {
     hasFlippedCard = true;
     console.log('first');
-    firstCard = event.target;
+    let firstCard = event.target;
     firstCard.classList.add('flipped');
     firstCard.removeEventListener('click', flipCard);
     console.log(firstCard);
     return;
   }
-
-  secondCard = event.target;
+  // setTimeout(()=> { }, 1000);
+  let secondCard = event.target;
   secondCard.classList.add('flipped');
   hasFlippedCard = false;
 
   checkForMatch();
+
   console.log('second');
   console.log(secondCard);
  }
@@ -80,6 +81,7 @@ const checkForMatch = () => {
     console.log('match');
     return;
   }
+
   unflipCards();
 }
 
