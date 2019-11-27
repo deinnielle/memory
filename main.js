@@ -55,16 +55,13 @@ const startGame = () => {
 let hasFlippedCard = false;
 
 const flipCard = (event) => {
-
   if (hasFlippedCard === false) {
     hasFlippedCard = true;
     console.log('first');
-
     firstCard = event.target;
     firstCard.classList.add('flipped');
     firstCard.removeEventListener('click', flipCard);
     console.log(firstCard);
-
     return;
   }
 
@@ -77,26 +74,24 @@ const flipCard = (event) => {
   console.log(secondCard);
  }
 
-  const checkForMatch = () => {
-    if (firstCard.innerHTML === secondCard.innerHTML) {
-      disableCards();
-      console.log('match');
-      return;
-    }
-
-    unflipCards();
-   }
-
-  const disableCards = () => {
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
-    console.log('test');
+const checkForMatch = () => {
+  if (firstCard.innerHTML === secondCard.innerHTML) {
+    disableCards();
+    console.log('match');
+    return;
   }
+  unflipCards();
+}
 
-  const unflipCards = () => {
-    firstCard.classList.remove('flipped');
-    secondCard.classList.remove('flipped');
+const disableCards = () => {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+  console.log('test');
+}
 
-  }
+const unflipCards = () => {
+  firstCard.classList.remove('flipped');
+  secondCard.classList.remove('flipped');
+}
 
 resetGame.addEventListener('click', startGame);
