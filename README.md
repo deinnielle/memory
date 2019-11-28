@@ -1,2 +1,2 @@
-# memory
+# Michael Scott Memory Game
  
