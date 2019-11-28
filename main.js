@@ -26,30 +26,43 @@ const shuffle = (array) => {
 let cardFlipped = false;
 let countFlipped = 0;
 
-const cardWrapper = document.querySelector('.card-wrapper');
+const cardsWrapper = document.querySelector('.cards-wrapper');
 const resetGame = document.querySelector('.reset');
 
 const startGame = () => {
   shuffle(cards);
   resetGame.innerHTML = 'New Game';
-  if(cardWrapper.hasChildNodes()) {
-    cardWrapper.innerHTML = '';
-    cards.forEach(card => {
-      const div = document.createElement('div');
-      div.innerHTML = card.number;
-      div.className = 'card';
-      cardWrapper.appendChild(div);
-      div.addEventListener('click', flipCard);
-    });
+  if(cardsWrapper.hasChildNodes()) {
+    cardsWrapper.innerHTML = '';
+    generateCards();
   } else {
-    cards.forEach(card => {
-      const div = document.createElement('div');
-      div.innerHTML = card.number;
-      div.className = 'card';
-      cardWrapper.appendChild(div);
-      div.addEventListener('click', flipCard);
-    });
+    generateCards();
   }
+}
+
+const generateCards = () => {
+  cards.forEach(card => {
+    const div = document.createElement('div');
+    div.className = 'flip-card';
+    div.innerHTML = createCards(card.number);
+    // cardsWrapper.appendChild(element);
+    // console.log(element);
+    cardsWrapper.appendChild(div);
+    div.addEventListener('click', flipCard);
+  });
+}
+
+const createCards = (number) => {
+  return (
+    `<div class='flip-card-inner'>
+      <div class='flip-card-front'>
+        <img src='img/card-front.jpg' alt='Card' data-number='${number}' />
+      </div>
+      <div class='flip-card-back'>
+        <span>${number}</span>
+      </div>
+    </div>`
+  );
 }
 
 let firstCardFlipped = false;
@@ -70,25 +83,25 @@ const flipCard = (event) => {
   if (!firstCardFlipped) {
     firstCardFlipped = true;
     console.log('first');
+    console.log(event);
+
     firstCard = event.target;
-    firstCard.classList.add('flipped');
+    firstCard.offsetParent.offsetParent.classList.add('flipped');
     console.log(firstCard);
     return;
   }
 
   secondCard = event.target;
-  secondCard.classList.add('flipped');
+  secondCard.offsetParent.offsetParent.classList.add('flipped');
   lockBoard = true;
 
-
   setTimeout(()=> {checkForMatch(); }, 500);
-
   console.log('second');
   console.log(secondCard);
  }
 
 const checkForMatch = () => {
-  if (firstCard.innerHTML === secondCard.innerHTML) {
+  if (firstCard.dataset.number === secondCard.dataset.number) {
     disableCards();
     console.log('match');
     count++;
@@ -107,8 +120,8 @@ const disableCards = () => {
 }
 
 const unflipCards = () => {
-  firstCard.classList.remove('flipped');
-  secondCard.classList.remove('flipped');
+  firstCard.offsetParent.offsetParent.classList.remove('flipped');
+  secondCard.offsetParent.offsetParent.classList.remove('flipped');
   resetCards();
 }
 

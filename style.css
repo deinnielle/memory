@@ -67,7 +67,7 @@ body {
   100%{background-position:100%}
 }
 
-.card-wrapper {
+.cards-wrapper {
   width: 100vw;
   height: 90vh;
   display: flex;
@@ -103,15 +103,6 @@ body {
   transform: rotateY(0deg);
 }
 
-.card::before {
-  width: 25%;
-  height: 25%;
-  background: rgb(6, 6, 6);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .flip-card {
   background-color: transparent;
   width: 25vw;
@@ -129,7 +120,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card-inner.flipped {
   transform: rotateY(180deg);
 }
 
@@ -155,7 +146,7 @@ body {
   align-content: center;
 }
 
-.flip-card p {
+.flip-card span {
   align-self: center;
 }
 
