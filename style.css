@@ -52,15 +52,15 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: none;
-  background: url('img/background.jpg');
-  background-size: 200px 200px;
+  background: url('img/background.gif');
+  background-size: 300px 220px;
   animation: wind 60s linear infinite;
   font-size: 2vw;
 }
 
 @keyframes wind {
-  0%{background-position:0%}
-  100%{background-position:100%}
+  0% {background-position: 0%}
+  100% {background-position: 100%}
 }
 
 .content-wrapper {
@@ -83,7 +83,7 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 30px;
-  padding: 10px
+  padding: 10px;
 }
 
 .flip-card {
@@ -103,6 +103,13 @@ body {
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
+
+/* fix padding issues
+
+
+
+
+*/
 
 .flip-card-inner.flip {
   transform: rotateY(180deg);
@@ -147,6 +154,11 @@ body {
   justify-content: center;
   margin: 10px 0 0 10px;
   padding: 20px;
+  -webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .new-game:hover {

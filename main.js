@@ -1,9 +1,8 @@
 let firstCardFlipped = false;
 let lockBoard = false;
-let count = 0;
-let cardFront;
 let firstCard;
 let secondCard;
+let count = 0;
 
 const cards = [
   {number: 1},
@@ -24,13 +23,6 @@ const cards = [
   {number: 8},
 ];
 
-const cardFronts = [
-  {image: 'img/card-front-one.jpg'},
-  {image: 'img/card-front-two.jpg'},
-  {image: 'img/card-front-three.jpg'},
-  {image: 'img/card-front-four.jpg'},
-];
-
 const shuffle = (array) => {
   array.sort(() => Math.random() - 0.5);
 }
@@ -49,7 +41,6 @@ const startGame = () => {
 }
 
 const generateCards = () => {
-  cardFront = cardFronts[Math.floor(Math.random()*cardFronts.length)];
   cards.forEach(card => {
     const div = document.createElement('div');
     div.className = 'flip-card';
@@ -63,7 +54,7 @@ const createCards = (number) => {
   return (
     `<div class='flip-card-inner'>
       <div class='flip-card-front'>
-        <img src=${cardFront.image} alt='Card' data-number='${number}' />
+        <img src='img/card-front.jpg' alt='Card' data-number='${number}' />
       </div>
       <div class='flip-card-back'>
         <span>${number}</span>
@@ -137,7 +128,7 @@ const resetCards = () => {
 }
 
 const checkIfWon = () => {
-  if(count === 2) {
+  if (count === 8) {
     console.log('you won!!!');
     cardsWrapper.innerHTML = '';
     cardsWrapper.innerHTML = '<img src="img/winner.gif" alt="You won!">';
