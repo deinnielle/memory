@@ -27,11 +27,11 @@ let cardFlipped = false;
 let countFlipped = 0;
 
 const cardsWrapper = document.querySelector('.cards-wrapper');
-const resetGame = document.querySelector('.reset');
+const newGame = document.querySelector('.new-game p');
 
 const startGame = () => {
   shuffle(cards);
-  resetGame.innerHTML = 'New Game';
+  newGame.innerHTML = 'New Game';
   if(cardsWrapper.hasChildNodes()) {
     cardsWrapper.innerHTML = '';
     generateCards();
@@ -45,8 +45,6 @@ const generateCards = () => {
     const div = document.createElement('div');
     div.className = 'flip-card';
     div.innerHTML = createCards(card.number);
-    // cardsWrapper.appendChild(element);
-    // console.log(element);
     cardsWrapper.appendChild(div);
     div.addEventListener('click', flipCard);
   });
@@ -106,7 +104,6 @@ const checkForMatch = () => {
     console.log('match');
     count++;
     console.log(count);
-
     resetCards();
     return;
   }
@@ -145,4 +142,4 @@ const checkIfWon = () => {
   }
 }
 
-resetGame.addEventListener('click', startGame);
+newGame.addEventListener('click', startGame);

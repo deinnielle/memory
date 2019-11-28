@@ -46,10 +46,6 @@ table {
 	box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-	display: none;
-}
-
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 30px;
@@ -65,42 +61,6 @@ body {
 @keyframes wind {
   0%{background-position:0%}
   100%{background-position:100%}
-}
-
-.cards-wrapper {
-  width: 100vw;
-  height: 90vh;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.card {
-  width: 25%;
-  height: 25%;
-  background: rgb(189, 219, 235);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  transform: rotateY(180deg);
-  transition: 0.5s;
-}
-
-.test-card {
-  width: 250px;
-  height: 250px;
-  background: rgb(189, 219, 235);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  transform: rotateY(180deg);
-  transition: 0.5s;
-}
-
-.card.flipped {
-  transform: rotateY(0deg);
 }
 
 .flip-card {
@@ -150,7 +110,18 @@ body {
   align-self: center;
 }
 
-/* .reset {
-  width: 100px;
-  height: 100px;
-} */
+.new-game {
+  width: 300px;
+  height: 150px;
+  cursor: pointer;
+  background: url('img/new-game.png');
+  background-size: 300px 170px;
+  color: rgb(252, 245, 50);
+  display: flex;
+  justify-content: center;
+}
+
+.new-game p {
+  align-self: center;
+  padding-top: 15px;
+}
