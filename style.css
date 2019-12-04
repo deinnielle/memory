@@ -65,7 +65,7 @@ body {
 } */
 
 .content-wrapper {
-  max-width: 1200px;
+  max-width: 1100px;
   width: 100%;
   padding: 10px 20px 20px 20px;
   margin: auto;
@@ -170,7 +170,7 @@ body {
   align-self: center;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1100px) {
   body {
     font-size: 4vw;
   }
