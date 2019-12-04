@@ -67,13 +67,13 @@ body {
 .content-wrapper {
   max-width: 1100px;
   width: 100%;
-  padding: 10px 20px 20px 20px;
+  padding: 10px;
   margin: auto;
 }
 
 .cards-wrapper {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -88,8 +88,8 @@ body {
 
 .flip-card {
   background-color: transparent;
-  width: 25%;
-  height: 25%;
+  width: 25vw;
+  height: 25vw; /* sists ändringen 25% */
   perspective: 1000px;
   cursor: pointer;
   padding: 10px;
@@ -103,13 +103,6 @@ body {
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
-
-/* fix padding issues
-
-
-
-
-*/
 
 .flip-card-inner.flip {
   transform: rotateY(180deg);
@@ -144,6 +137,10 @@ body {
   align-self: center;
 }
 
+.levels {
+  display: flex;
+}
+
 .new-game {
   width: calc(25% - 20px);
   cursor: pointer;
@@ -152,7 +149,7 @@ body {
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  margin: 10px 0 0 10px;
+  margin: 10px;
   padding: 20px;
   -webkit-user-select: none;
 	-khtml-user-select: none;
@@ -174,7 +171,7 @@ body {
   body {
     font-size: 4vw;
   }
-  .new-game {
+  /* .new-game {
     width: calc(50% - 20px);
-  }
+  } */
 }

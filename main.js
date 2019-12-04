@@ -124,7 +124,7 @@ const resetCards = () => {
 }
 
 const checkIfWon = () => {
-  if (count === 8) {
+  if (count === 1) {
     console.log('you won!!!');
     cardsWrapper.innerHTML = '';
     cardsWrapper.innerHTML = '<img src="img/winner.gif" alt="You won!">';
