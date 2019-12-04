@@ -1,33 +1,39 @@
+const cardsWrapper = document.querySelector('.cards-wrapper');
+const easy = document.querySelector('.new-game.easy');
+const medium = document.querySelector('.new-game.medium');
+const hard = document.querySelector('.new-game.hard');
+const crazy = document.querySelector('.new-game.crazy');
+
+let cards = [];
 let firstCardFlipped = false;
 let lockBoard = false;
 let firstCard;
 let secondCard;
 let count = 0;
 
-const cards = [];
+const startGame = (event) => {
+  let board = event.target.dataset.board;
 
-for (let i = 1; i <= 8; i++) {
-  cards.push(
-    {number: i},
-    {number: i},
-  );
-}
+  for (let i = 1; i <= board; i++) {
+    cards.push(
+      {number: i},
+      {number: i},
+    );
+  }
 
-const shuffle = (array) => {
-  array.sort(() => Math.random() - 0.5);
-}
-
-const cardsWrapper = document.querySelector('.cards-wrapper');
-const newGame = document.querySelector('.new-game');
-
-const startGame = () => {
   shuffle(cards);
+
   if(cardsWrapper.hasChildNodes()) {
     cardsWrapper.innerHTML = '';
     generateCards();
   } else {
     generateCards();
   }
+  cards = [];
+}
+
+const shuffle = (array) => {
+  array.sort(() => Math.random() - 0.5);
 }
 
 const generateCards = () => {
@@ -131,5 +137,8 @@ const checkIfWon = () => {
   }
 }
 
-window.onload = startGame();
-newGame.addEventListener('click', startGame);
+// window.onload = startGame();
+easy.addEventListener('click', startGame);
+medium.addEventListener('click', startGame);
+hard.addEventListener('click', startGame);
+crazy.addEventListener('click', startGame);
