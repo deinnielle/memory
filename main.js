@@ -10,6 +10,7 @@ let lockBoard = false;
 let firstCard;
 let secondCard;
 let count = 0;
+let clicks = 0;
 
 const startGame = (event) => {
   let board = event.target.dataset.board;
