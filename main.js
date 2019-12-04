@@ -4,24 +4,14 @@ let firstCard;
 let secondCard;
 let count = 0;
 
-const cards = [
-  {number: 1},
-  {number: 1},
-  {number: 2},
-  {number: 2},
-  {number: 3},
-  {number: 3},
-  {number: 4},
-  {number: 4},
-  {number: 5},
-  {number: 5},
-  {number: 6},
-  {number: 6},
-  {number: 7},
-  {number: 7},
-  {number: 8},
-  {number: 8},
-];
+const cards = [];
+
+for (let i = 1; i <= 8; i++) {
+  cards.push(
+    {number: i},
+    {number: i},
+  );
+}
 
 const shuffle = (array) => {
   array.sort(() => Math.random() - 0.5);
@@ -86,7 +76,7 @@ const flipCard = (event) => {
   secondCard = event.target;
   secondCard.offsetParent.offsetParent.classList.add('flip');
   lockBoard = true;
-  setTimeout(()=> {
+  setTimeout(() => {
     checkForMatch();
   }, 500);
 
