@@ -1,3 +1,5 @@
+'use strict';
+
 const cardsWrapper = document.querySelector('.cards-wrapper');
 const easy = document.querySelector('.new-game.easy');
 const medium = document.querySelector('.new-game.medium');
@@ -10,10 +12,20 @@ let lockBoard = false;
 let firstCard;
 let secondCard;
 let count = 0;
-let clicks = 0;
+let board;
+const fail = new Audio('audio/fail.mp3');
+const win = new Audio('audio/win.mp3');
+const match = new Audio('audio/match.mp3');
 
 const startGame = (event) => {
-  let board = event.target.dataset.board;
+  win.pause();
+  win.currentTime = 0;
+
+  if (event) {
+    board = event.target.dataset.board;
+  } else {
+    board = 8;
+  }
 
   for (let i = 1; i <= board; i++) {
     cards.push(
@@ -98,9 +110,11 @@ const checkForMatch = () => {
     count++;
     console.log(count);
     resetCards();
+    match.play();
     return;
   }
   unflipCards();
+  fail.play();
 }
 
 const disableCards = () => {
@@ -125,20 +139,22 @@ const resetCards = () => {
 }
 
 const checkIfWon = () => {
-  if (count === 1) {
+  if (count === board) {
     console.log('you won!!!');
     cardsWrapper.innerHTML = '';
-    cardsWrapper.innerHTML = '<img src="img/winner.gif" alt="You won!">';
+    cardsWrapper.innerHTML = '<div class="win"><img src="img/winner.gif" alt="You won!"></div>';
     firstCardFlipped = false;
     lockBoard = false;
     firstCard = null;
     secondCard = null;
     count = 0;
+    win.play();
     return;
   }
 }
 
-// window.onload = startGame();
+window.onload = startGame();
+
 easy.addEventListener('click', startGame);
 medium.addEventListener('click', startGame);
 hard.addEventListener('click', startGame);
