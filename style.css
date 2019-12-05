@@ -171,8 +171,10 @@ body {
   color: rgb(214, 170, 245);
 }
 
-.new-game p {
-  align-self: center;
+.counter {
+  color: rgb(255, 162, 244);
+  /* padding: 10px; */
+  text-align: center
 }
 
 @media screen and (max-width: 1100px) {

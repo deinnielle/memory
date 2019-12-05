@@ -5,24 +5,30 @@ const easy = document.querySelector('.new-game.easy');
 const medium = document.querySelector('.new-game.medium');
 const hard = document.querySelector('.new-game.hard');
 const crazy = document.querySelector('.new-game.crazy');
+const counter = document.querySelector('.counter');
+
+const fail = new Audio('audio/fail.mp3');
+const win = new Audio('audio/win.mp3');
+const match = new Audio('audio/match.mp3');
 
 let cards = [];
 let firstCardFlipped = false;
 let lockBoard = false;
 let firstCard;
 let secondCard;
-let count = 0;
+let clicks = 0;
+let matchCount = 0;
 let board;
-const fail = new Audio('audio/fail.mp3');
-const win = new Audio('audio/win.mp3');
-const match = new Audio('audio/match.mp3');
 
 const startGame = (event) => {
   win.pause();
   win.currentTime = 0;
+  counter.innerHTML = '';
 
   if (event) {
     board = event.target.dataset.board;
+    console.log(board);
+
   } else {
     board = 8;
   }
@@ -73,6 +79,13 @@ const createCards = (number) => {
 }
 
 const flipCard = (event) => {
+  clicks++;
+
+  if (clicks > 0) {
+    console.log(clicks);
+    counter.innerHTML = `Clicks: ${clicks}`;
+  }
+
   if (lockBoard) {
     return;
   }
@@ -107,8 +120,8 @@ const checkForMatch = () => {
   if (firstCard.dataset.number === secondCard.dataset.number) {
     disableCards();
     console.log('match');
-    count++;
-    console.log(count);
+    matchCount++;
+    console.log(matchCount);
     resetCards();
     match.play();
     return;
@@ -139,15 +152,20 @@ const resetCards = () => {
 }
 
 const checkIfWon = () => {
-  if (count === board) {
+  if (matchCount == board) {
     console.log('you won!!!');
     cardsWrapper.innerHTML = '';
-    cardsWrapper.innerHTML = '<div class="win"><img src="img/winner.gif" alt="You won!"></div>';
+    cardsWrapper.innerHTML = (
+      `<div class="win">
+        <img src="img/winner.gif" alt="You won!">
+      </div>`
+    );
     firstCardFlipped = false;
     lockBoard = false;
     firstCard = null;
     secondCard = null;
-    count = 0;
+    matchCount = 0;
+    clicks = 0;
     win.play();
     return;
   }
