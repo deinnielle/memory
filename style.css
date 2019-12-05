@@ -53,16 +53,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: none;
   background: rgb(252, 233, 205);
-  /* background: url('img/background.gif'); */
   background-size: 300px 220px;
   animation: wind 60s linear infinite;
   font-size: 2vw;
 }
-
-/* @keyframes wind {
-  0% {background-position: 0%}
-  100% {background-position: 100%}
-} */
 
 .content-wrapper {
   max-width: 1100px;
