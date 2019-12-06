@@ -29,7 +29,7 @@ const startGame = (event) => {
   if (event) {
     board = event.target.dataset.board;
   } else {
-    board = 1;
+    board = 8;
   }
 
   for (let i = 1; i <= board; i++) {
