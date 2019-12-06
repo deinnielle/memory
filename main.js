@@ -72,7 +72,7 @@ const createCards = (number) => {
         <img src='img/card-front.jpg' alt='Card' data-number='${number}' />
       </div>
       <div class='flip-card-back'>
-        <span>${number}</span>
+        <p>${number}</p>
       </div>
     </div>`
   );
@@ -80,9 +80,9 @@ const createCards = (number) => {
 
 const flipCard = (event) => {
   clicks++;
+  console.log(event);
 
   if (clicks > 0) {
-    console.log(clicks);
     counter.innerHTML = `Clicks: ${clicks}`;
   }
 
@@ -90,15 +90,13 @@ const flipCard = (event) => {
     return;
   }
 
-  if (firstCard === event.target) {
+  if (event.target.className === 'flip-card-back' || event.target.tagName === 'P') {
+    console.log('hej');
     return;
   }
 
   if (!firstCardFlipped) {
     firstCardFlipped = true;
-    console.log('first');
-    console.log(event);
-
     firstCard = event.target;
     firstCard.offsetParent.offsetParent.classList.add('flip');
     console.log(firstCard);
@@ -111,9 +109,6 @@ const flipCard = (event) => {
   setTimeout(() => {
     checkForMatch();
   }, 500);
-
-  console.log('second');
-  console.log(secondCard);
 }
 
 const checkForMatch = () => {
@@ -121,7 +116,6 @@ const checkForMatch = () => {
     disableCards();
     console.log('match');
     matchCount++;
-    console.log(matchCount);
     resetCards();
     match.play();
     return;
