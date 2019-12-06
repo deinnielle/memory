@@ -5,7 +5,7 @@ The Office themed memory game with different levels and click counter
 
 ## Testers
 * [Bernhard Stedt](https://github.com/vehx)
-* [TBD](https://github.com)
+* [André Chamoun](https://github.com/Tartaros1)
 
 ## Code Review
 
