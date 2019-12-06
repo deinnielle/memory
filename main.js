@@ -158,7 +158,7 @@ const checkIfWon = () => {
   }
 }
 
-window.onload = startGame();
+startGame();
 
 easy.addEventListener('click', startGame);
 medium.addEventListener('click', startGame);
