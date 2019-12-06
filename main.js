@@ -5,7 +5,7 @@ const easy = document.querySelector('.new-game.easy');
 const medium = document.querySelector('.new-game.medium');
 const hard = document.querySelector('.new-game.hard');
 const crazy = document.querySelector('.new-game.crazy');
-const counter = document.querySelector('.counter');
+const clicksWrapper = document.querySelector('.clicks');
 
 const fail = new Audio('audio/fail.mp3');
 const win = new Audio('audio/win.mp3');
@@ -23,14 +23,13 @@ let board;
 const startGame = (event) => {
   win.pause();
   win.currentTime = 0;
-  counter.innerHTML = '';
+  clicksWrapper.innerHTML = '';
+  clicks = 0;
 
   if (event) {
     board = event.target.dataset.board;
-    console.log(board);
-
   } else {
-    board = 8;
+    board = 1;
   }
 
   for (let i = 1; i <= board; i++) {
@@ -80,10 +79,9 @@ const createCards = (number) => {
 
 const flipCard = (event) => {
   clicks++;
-  console.log(event);
 
   if (clicks > 0) {
-    counter.innerHTML = `Clicks: ${clicks}`;
+    clicksWrapper.innerHTML = `Clicks: ${clicks}`;
   }
 
   if (lockBoard) {
@@ -91,7 +89,6 @@ const flipCard = (event) => {
   }
 
   if (event.target.className === 'flip-card-back' || event.target.tagName === 'P') {
-    console.log('hej');
     return;
   }
 
@@ -99,7 +96,6 @@ const flipCard = (event) => {
     firstCardFlipped = true;
     firstCard = event.target;
     firstCard.offsetParent.offsetParent.classList.add('flip');
-    console.log(firstCard);
     return;
   }
 
@@ -113,11 +109,10 @@ const flipCard = (event) => {
 
 const checkForMatch = () => {
   if (firstCard.dataset.number === secondCard.dataset.number) {
-    disableCards();
-    console.log('match');
-    matchCount++;
-    resetCards();
     match.play();
+    matchCount++;
+    disableCards();
+    resetCards();
     return;
   }
   unflipCards();
@@ -128,7 +123,6 @@ const disableCards = () => {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
   resetCards();
-  console.log('disabled cards');
 }
 
 const unflipCards = () => {
@@ -147,7 +141,7 @@ const resetCards = () => {
 
 const checkIfWon = () => {
   if (matchCount == board) {
-    console.log('you won!!!');
+    win.play();
     cardsWrapper.innerHTML = '';
     cardsWrapper.innerHTML = (
       `<div class="win">
@@ -160,7 +154,6 @@ const checkIfWon = () => {
     secondCard = null;
     matchCount = 0;
     clicks = 0;
-    win.play();
     return;
   }
 }
